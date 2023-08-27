@@ -1,13 +1,16 @@
 import { Headers } from "@/components/mainPage/Headers";
+import { ItemList } from "@/components/mainPage/ItemList";
 import React from "react";
-
-export const MainPageView = () => {
+interface IMainPageProps {
+  data: any;
+}
+export const MainPageView = ({ data }: IMainPageProps) => {
   return (
     <>
-      <header className='sticky'>
-        <Headers />
-      </header>
-      <body></body>
+      <Headers data={data} />
+      <div className='  h-screen w-full '>
+        <ItemList data={data} />
+      </div>
     </>
   );
 };

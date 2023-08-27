@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { getLocalData } from "../../localData";
+import { getLocalData } from "../../lib/localData";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -8,11 +8,14 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { SwiperComp } from "./Swiper";
 import { HeaderLogo } from "./HeaderLogo";
-export const Headers = () => {
+interface IHeader {
+  data: any;
+}
+export const Headers = ({ data }: IHeader) => {
   return (
-    <div className='w-full flex flex-col  justify-start gap-4  bg-red-700  '>
+    <header className='w-full flex flex-col  justify-start gap-2  bg-[#8B0505]  '>
       <HeaderLogo />
-      <SwiperComp />
-    </div>
+      <SwiperComp data={data} />
+    </header>
   );
 };
