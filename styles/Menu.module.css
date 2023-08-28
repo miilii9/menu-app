@@ -8,8 +8,10 @@
   border-bottom: 2px solid hsla(0, 0%, 100%, 0.58039);
 }
 .menuHeader {
-  position: sticky;
+  position: fixed;
   top: 0;
+  z-index: 900;
+  background-color: #8b0505;
 }
 .allCategories {
   background-color: hsl(0deg 0% 100% / 12.16%);
@@ -31,4 +33,10 @@
   left: 0;
   position: absolute;
   width: 100%;
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

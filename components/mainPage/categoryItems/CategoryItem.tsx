@@ -3,11 +3,15 @@ import Image from "next/image";
 import style from "@/styles/Menu.module.css";
 interface ICategoryItemProp {
   data: any;
+  menuItemModal: (section: any) => void;
 }
-export const CategoryItem = ({ data }: ICategoryItemProp) => {
+export const CategoryItem = ({ data, menuItemModal }: ICategoryItemProp) => {
   return (
     <div
-      className={`w-full  h-96 bg-[#2e2e2e] flex flex-col relative justify-between items-center align-middle rounded-md ${style.foodImg}`}>
+      className={`w-full  h-96 bg-[#2e2e2e] flex flex-col relative justify-between items-center align-middle rounded-md ${style.foodImg}`}
+      onClick={() => {
+        menuItemModal({ ...data });
+      }}>
       <div
         className={`flex w-full  flex-col justify-end pb-2 absolute gap-2 h-48  top-[52%] px-2 ${style.foodRecipe}`}>
         <div className='flex flex-col gap-1'>
