@@ -52,7 +52,6 @@ const MainPageViewMode = ({ data }: IMainPage) => {
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
-      console.log("first");
       if (
         event.type === "keydown" &&
         ((event as React.KeyboardEvent).key === "Tab" ||
@@ -63,22 +62,20 @@ const MainPageViewMode = ({ data }: IMainPage) => {
 
       setState({ ...state, [anchor]: open });
     };
-  const addOrderHandler = ( item: any) => {
-    let orders = [...order];
+  const addOrderHandler = (item: any) => {
+    let tempOrders = [...order];
+    const objIndex = tempOrders.findIndex((obj) => obj.id == item.id);
     let tempItem = { ...item, amount: 1 };
-    const itemExist = orders.includes(tempItem);
-    if (itemExist) {
-      return;
-    } else {
-        orders.push(tempItem);
-      setOrder([...orders]);
+    console.log(objIndex);
+    if (objIndex == -1) {
+      tempOrders.push(tempItem);
+      setOrder([...tempOrders]);
     }
     modalHandler();
   };
   const orderItemChange = (type: string, item: any) => {
     let tempOrders = [...order];
     const objIndex = tempOrders.findIndex((obj) => obj.id == item.id);
-
     switch (type) {
       case "add":
         tempOrders[objIndex].amount += 1;
@@ -91,6 +88,10 @@ const MainPageViewMode = ({ data }: IMainPage) => {
         break;
     }
     setOrder(tempOrders);
+  };
+  const deleteAll = () => {
+    setOrder([]);
+    setState({ ...state, ["left"]: false });
   };
   return (
     <MainPageView
@@ -105,6 +106,7 @@ const MainPageViewMode = ({ data }: IMainPage) => {
       addOrderHandler={addOrderHandler}
       order={order}
       orderItemChange={orderItemChange}
+      deleteAll={deleteAll}
     />
   );
 };

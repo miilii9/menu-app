@@ -3,14 +3,16 @@ import { MenuItem } from "./MenuItem";
 interface IItemList {
   data: any;
   menuItemModal: (section: any) => void;
-  addOrderHandler: ( item: any) => void;
+  addOrderHandler: (item: any) => void;
   orderItemChange: (type: any, item: any) => void;
+  order:any;
 }
-export const ItemList = ({
+export const Menu = ({
   data,
   menuItemModal,
   addOrderHandler,
   orderItemChange,
+  order,
 }: IItemList) => {
   return (
     <div className=' bg-[#282828] h-screen  flex flex-col justify-start gap-4 mt-[15rem] '>
@@ -20,6 +22,7 @@ export const ItemList = ({
           key={q}
           menuItemModal={menuItemModal}
           orderItemChange={orderItemChange}
+          order={order}
         />
       ))}
     </div>

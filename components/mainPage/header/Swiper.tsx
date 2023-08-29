@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import style from "@/styles/Menu.module.css";
-import { useSwiperSlide } from "swiper/react";
 import { FaBookOpen } from "react-icons/fa";
 
 interface ICategorys {
@@ -19,7 +18,6 @@ export const SwiperComp = ({
   order,
   toggleDrawer,
 }: ICategorys) => {
-  const swiperSlide = useSwiperSlide();
 
   return (
     <div
@@ -48,9 +46,7 @@ export const SwiperComp = ({
         spaceBetween={50}
         modules={[Navigation]}
         centeredSlides={true}
-        onSlideChange={(swiper) => {
-          console.log(swiper);
-        }}>
+       >
         {data.categorys.map((item: any, q: any) => (
           <SwiperSlide
             className='w-full my-3 '

@@ -1,5 +1,5 @@
 import { Headers } from "@/components/mainPage/header/Headers";
-import { ItemList } from "@/components/mainPage/categoryItems/ItemList";
+import { Menu } from "@/components/mainPage/categoryItems/Menu";
 import React from "react";
 import ItemModal from "@/components/mainPage/ItemModal";
 import ListDrawer from "@/components/mainPage/order/ListDrawer";
@@ -13,8 +13,9 @@ interface IMainPageProps {
   toggleDrawer: (vars: any, sth: any) => void;
   state: any;
   order: any;
-  addOrderHandler: ( item: any) => void;
+  addOrderHandler: (item: any) => void;
   orderItemChange: (type: any, item: any) => void;
+  deleteAll: () => void;
 }
 export const MainPageView = ({
   data,
@@ -28,6 +29,7 @@ export const MainPageView = ({
   addOrderHandler,
   order,
   orderItemChange,
+  deleteAll,
 }: IMainPageProps) => {
   return (
     <>
@@ -36,6 +38,7 @@ export const MainPageView = ({
         state={state}
         order={order}
         orderItemChange={orderItemChange}
+        deleteAll={deleteAll}
       />
       <ItemModal
         modalData={modalData}
@@ -51,11 +54,12 @@ export const MainPageView = ({
         toggleDrawer={toggleDrawer}
       />
       <div className='  h-screen w-full  '>
-        <ItemList
+        <Menu
           data={data}
           menuItemModal={menuItemModal}
           addOrderHandler={addOrderHandler}
           orderItemChange={orderItemChange}
+          order={order}
         />
       </div>
     </>

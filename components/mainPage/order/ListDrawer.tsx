@@ -1,5 +1,4 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import { FaTrash, FaBook } from "react-icons/fa";
@@ -11,8 +10,15 @@ interface IDrawer {
   state: any;
   order: any;
   orderItemChange: (type: any, item: any) => void;
+  deleteAll: () => void;
 }
-export default function ListDrawer({ toggleDrawer, state, order, orderItemChange }: IDrawer) {
+export default function ListDrawer({
+  toggleDrawer,
+  state,
+  order,
+  orderItemChange,
+  deleteAll,
+}: IDrawer) {
   const list = (anchor: Anchor) => (
     <div
       style={{
@@ -34,7 +40,9 @@ export default function ListDrawer({ toggleDrawer, state, order, orderItemChange
               <FaBook />
             </span>
             <div className='flex flex-row-reverse justify-start items-center gap-2'>
-              <span className='text-xl text-[#8b0505] bg-[#161616] p-2 font-light rounded-lg '>
+              <span
+                className='text-xl text-[#8b0505] bg-[#161616] p-2 font-light rounded-lg '
+                onClick={deleteAll}>
                 <FaTrash />
               </span>
               <span className='text-[#8b0505] self-center w-3/4 text-center '>

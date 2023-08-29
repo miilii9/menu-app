@@ -34,6 +34,17 @@
   position: absolute;
   width: 100%;
 }
+.active:after {
+  background: linear-gradient(
+    180deg,
+    #8b050500,
+    #8b0505e6 59%,
+    #8b0505f2 72%,
+    #8b0505 82%,
+    #8b0505 90%,
+    #8b0505
+  ) !important;
+}
 .modal {
   position: absolute;
   top: 50%;

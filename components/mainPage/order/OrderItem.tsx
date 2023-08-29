@@ -6,13 +6,6 @@ interface iOrderItem {
   orderItemChange: (type: any, item: any) => void;
 }
 export const OrderItem = ({ data, orderItemChange }: iOrderItem) => {
-  //  for (const [key, value] of Object.entries(filters)) {
-  //    if (value) {
-  //      querys[key] = value;
-  //    } else {
-  //      delete router.query[key];
-  //    }
-  //  }
   return (
     <div className='bg-[#161616] p-1  flex justify-between items-start gap-1 w-full rounded-lg'>
       <div className='w-full flex justify-start gap-1 items-start h-full'>
