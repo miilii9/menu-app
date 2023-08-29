@@ -24,11 +24,18 @@ export const SwiperComp = ({
   return (
     <div
       className={`  w-full  flex flex-col items-center align-middle justify-start`}>
-      <span
-        className='absolute top-2 left-2 z-[999] orderIcon'
-        onClick={toggleDrawer("left", true)}>
-        <FaBookOpen className={"text-2xl"} />
-      </span>
+      {order.length ? (
+        <span
+          className='absolute top-2 left-2 z-[999] orderIcon'
+          onClick={toggleDrawer("left", true)}>
+          <div className='relative'>
+            <span className='absolute -top-1 -right-3 bg-orange-600 text-sm rounded-full w-5 h-5 text-center align-middle  text-white'>
+              {order.length}
+            </span>
+            <FaBookOpen className={"text-4xl"} />
+          </div>{" "}
+        </span>
+      ) : null}
       <div className=' mb-2 '>
         <span
           className={` ${style.allCategories} text-xs font-medium bg-[rgba(255, 255, 255, 0.15)] px-4 py-2 w-full text-center rounded-3xl cursor-pointer`}>
@@ -46,13 +53,13 @@ export const SwiperComp = ({
         }}>
         {data.categorys.map((item: any, q: any) => (
           <SwiperSlide
-            className='w-full my-2 '
+            className='w-full my-3 '
             key={q}
             id={item.id}
             onClick={() => {
               scrollToSection(item.name);
             }}>
-            <div className=' bg-[#e6e6e6c9]  w-32 flex flex-col justify-center items-center align-middle  rounded-2xl text-center gap-2 p-8 h-32'>
+            <div className=' bg-[#ffffff80]  w-32 flex flex-col justify-center items-center align-middle  rounded-2xl text-center gap-2 p-8 h-32'>
               <img
                 src='pics/cat.png'
                 alt='pic'

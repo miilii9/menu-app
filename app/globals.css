@@ -20,3 +20,13 @@ body {
   color: rgb(var(--foreground-rgb));
   direction: rtl;
 }
+.MuiDrawer-paper {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+.MuiBackdrop-root {
+  /* background-color: transparent !important; */
+}
+.swiper-slide-active div {
+  background-color: #ffffffba;
+}

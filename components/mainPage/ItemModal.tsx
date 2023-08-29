@@ -17,7 +17,7 @@ interface IModalProps {
   openModal: boolean;
   modalData: any;
   modalHanlder: (section: any) => void;
-  addOrderHandler: (stat: any, item: any) => void;
+  addOrderHandler: ( item: any) => void;
 }
 export default function ItemModal({
   modalHanlder,
@@ -60,7 +60,7 @@ export default function ItemModal({
             <div
               className='w-5/6 mx-auto py-2 px-2 bg-[#8B0505] rounded-full mt-2 cursor-pointer text-center font-black'
               onClick={() => {
-                addOrderHandler("add", modalData);
+                addOrderHandler( modalData);
               }}>
               <span className=''>افزودن به یاداشت سفارش</span>
             </div>

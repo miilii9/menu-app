@@ -2,7 +2,7 @@ import { Headers } from "@/components/mainPage/header/Headers";
 import { ItemList } from "@/components/mainPage/categoryItems/ItemList";
 import React from "react";
 import ItemModal from "@/components/mainPage/ItemModal";
-import ListDrawer from "@/components/mainPage/ListDrawer";
+import ListDrawer from "@/components/mainPage/order/ListDrawer";
 interface IMainPageProps {
   data: any;
   openModal: boolean;
@@ -13,7 +13,8 @@ interface IMainPageProps {
   toggleDrawer: (vars: any, sth: any) => void;
   state: any;
   order: any;
-  addOrderHandler: (stat: any, item: any) => void;
+  addOrderHandler: ( item: any) => void;
+  orderItemChange: (type: any, item: any) => void;
 }
 export const MainPageView = ({
   data,
@@ -26,10 +27,16 @@ export const MainPageView = ({
   state,
   addOrderHandler,
   order,
+  orderItemChange,
 }: IMainPageProps) => {
   return (
     <>
-      <ListDrawer toggleDrawer={toggleDrawer} state={state} order={order} />
+      <ListDrawer
+        toggleDrawer={toggleDrawer}
+        state={state}
+        order={order}
+        orderItemChange={orderItemChange}
+      />
       <ItemModal
         modalData={modalData}
         openModal={openModal}
@@ -48,6 +55,7 @@ export const MainPageView = ({
           data={data}
           menuItemModal={menuItemModal}
           addOrderHandler={addOrderHandler}
+          orderItemChange={orderItemChange}
         />
       </div>
     </>

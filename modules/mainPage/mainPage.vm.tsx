@@ -9,22 +9,26 @@ type Anchor = "top" | "left" | "bottom" | "right";
 const MainPageViewMode = ({ data }: IMainPage) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [modalData, setModalData] = useState<any>(null);
-  const [order, setOrder] = useState<any>({});
+  const [order, setOrder] = useState<any>([]);
   const [state, setState] = React.useState({
     left: false,
   });
   useEffect(() => {
     const changeColor = () => {
       const logoEl = document?.querySelector<HTMLElement>(".logoEl");
-      const orderIcon: any = document?.querySelector<HTMLElement>(".orderIcon");
+      const orderIcon = document?.querySelector<HTMLElement>(".orderIcon");
       if (window.scrollY >= 40) {
         if (logoEl) {
           logoEl.style.top = "-60px";
-          orderIcon.style.top = "+60px";
+        }
+        if (orderIcon) {
+          orderIcon.style.top = "+70px";
         }
       } else {
         if (logoEl) {
           logoEl.style.top = "0px";
+        }
+        if (orderIcon) {
           orderIcon.style.top = ".5rem";
         }
       }
@@ -59,10 +63,35 @@ const MainPageViewMode = ({ data }: IMainPage) => {
 
       setState({ ...state, [anchor]: open });
     };
-  const addOrderHandler = (stat: string, item: any) => {
-    setOrder([...order, item]);
+  const addOrderHandler = ( item: any) => {
+    let orders = [...order];
+    let tempItem = { ...item, amount: 1 };
+    const itemExist = orders.includes(tempItem);
+    if (itemExist) {
+      return;
+    } else {
+        orders.push(tempItem);
+      setOrder([...orders]);
+    }
+    modalHandler();
   };
+  const orderItemChange = (type: string, item: any) => {
+    let tempOrders = [...order];
+    const objIndex = tempOrders.findIndex((obj) => obj.id == item.id);
 
+    switch (type) {
+      case "add":
+        tempOrders[objIndex].amount += 1;
+        break;
+      case "sub":
+        tempOrders[objIndex].amount -= 1;
+        break;
+      case "remove":
+        tempOrders.splice(objIndex, 1);
+        break;
+    }
+    setOrder(tempOrders);
+  };
   return (
     <MainPageView
       data={data}
@@ -75,6 +104,7 @@ const MainPageViewMode = ({ data }: IMainPage) => {
       state={state}
       addOrderHandler={addOrderHandler}
       order={order}
+      orderItemChange={orderItemChange}
     />
   );
 };

@@ -4,8 +4,9 @@ import { CategoryItem } from "./CategoryItem";
 interface IItem {
   data: any;
   menuItemModal: (section: any) => void;
+  orderItemChange: (type: any, item: any) => void;
 }
-export const MenuItem = ({ data, menuItemModal }: IItem) => {
+export const MenuItem = ({ data, menuItemModal, orderItemChange }: IItem) => {
   return (
     <div
       id={data.name}
