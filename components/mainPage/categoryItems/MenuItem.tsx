@@ -13,10 +13,11 @@ export const MenuItem = ({
   orderItemChange,
   order,
 }: IItem) => {
+  const name = data.name.replace(/\s+/g, "");
   return (
-    <div
+    <section
       id={data.name}
-      className={`${style.categoryItem} flex flex-col gap-4 items-center align-middle w-full  container   p-4`}>
+      className={`${style.categoryItem} flex flex-col gap-4 items-center align-middle w-full  container ${name}  p-4`}>
       <h3
         className={` w-full ${style.header}  text-center font-extrabold   relative z-10`}>
         <span className='text-red-900  bg-[#282828] z-20'>
@@ -33,6 +34,6 @@ export const MenuItem = ({
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };

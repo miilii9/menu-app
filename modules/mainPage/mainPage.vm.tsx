@@ -37,9 +37,16 @@ const MainPageViewMode = ({ data }: IMainPage) => {
   }, []);
 
   const scrollToSection = (section: any) => {
-    var topOfElement =
-      (document.getElementById(`${section}`)?.offsetTop as number) - 200;
-    window.scroll({ top: topOfElement, behavior: "smooth" });
+    console.log(section)
+    const sectionEl: HTMLElement = document?.querySelector(`.${section}`) as HTMLElement
+    console.log(sectionEl)
+    if (sectionEl) {
+      console.log(sectionEl)
+      
+      var topOfElement = (sectionEl?.offsetTop as number) - 200;
+      
+      window.scroll({ top: topOfElement, behavior: "smooth" });
+    }
   };
 
   const modalHandler = () => {

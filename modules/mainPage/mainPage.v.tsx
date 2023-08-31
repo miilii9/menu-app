@@ -53,7 +53,7 @@ export const MainPageView = ({
         order={order}
         toggleDrawer={toggleDrawer}
       />
-      <div className='  h-screen w-full  '>
+      <div className='  h-fit w-full  '>
         <Menu
           data={data}
           menuItemModal={menuItemModal}
